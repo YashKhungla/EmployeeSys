@@ -1,0 +1,128 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        /* Custom CSS for styling */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .account-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #fff;
+        }
+
+            .card legend {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-create-account {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="account-container">
+            <div class="card">
+                <form id="registerForm">
+                    <fieldset>
+                        <legend>Registration</legend>
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" id="Name" name="Name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Surname">Surname</label>
+                            <input type="text" class="form-control" id="Surname" name="Surname" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Birthdate">Birth Date</label>
+                            <input type="date" class="form-control" id="Birthdate" name="Birthdate" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="EmployeeNumber">Employee Number</label>
+                            <input type="number" class="form-control" id="EmployeeNumber" name="EmployeeNumber" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Manager">Manager</label>
+                            <input type="text" class="form-control" id="Manager" name="Manager" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Role">Role</label>
+                            <input type="text" class="form-control" id="Role" name="Role" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Salary">Salary</label>
+                            <input type="number" class="form-control" id="Salary" name="Salary" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="email" class="form-control" id="Email" name="Email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <input type="password" class="form-control" id="Password" name="Password" required />
+                        </div>
+                        <button type="button" class="btn btn-primary btn-create-account" onclick="handleCreateAccount()">Create Account</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function handleCreateAccount() {
+            var formData = {
+                Name: $('#Name').val(),
+                Surname: $('#Surname').val(),
+                Birthdate: $('#Birthdate').val(),
+                EmployeeNumber: $('#EmployeeNumber').val(),
+                Manager: $('#Manager').val(),
+                Role: $('#Role').val(),
+                Salary: $('#Salary').val(),
+                Email: $('#Email').val(),
+                Password: $('#Password').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/Register/Index',
+                data: formData,
+                success: function (response) {
+                    console.log('Account created successfully');
+                    window.location.href = '/Home/Index';
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error creating account:', error);
+                    alert('Error creating account. Please try again later.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

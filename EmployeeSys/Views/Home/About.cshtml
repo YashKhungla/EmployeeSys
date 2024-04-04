@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Employee Management System</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+        .about-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>@ViewData["Title"] - Employee Management System</h1>
+
+    <div id="map"></div>
+
+    <div class="w-100 d-flex align-items-center justify-content-center mt-5">
+        <div class="about-card shadow-sm w-75 text-justify px-5 py-5">
+            <p>
+                The purpose of an employee management system is to help improve workforce productivity, identify ways to engage and retain talent, and alleviate administrative burdens for HR professionals. Achieving greater efficiency through the use of technology can also help control costs and minimize compliance risks.
+            </p>
+            <p>
+                Edit: Allows users to modify existing employee information within the system.
+            </p>
+
+                <p>
+                Delete: Permits users to remove employee records or other data from the system.
+                </p>
+                <p>
+                Update: Enables users to make changes or updates to employee data and records.
+            </p>
+               <p>
+                View Details: Provides users with the ability to see comprehensive information about employees stored in the system.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function initMap() {
+            // Center coordinates
+            var center = { lat: 23.34793076844109, lng: 70.25678451534345 };
+
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: center,
+                zoom: 15 // You can adjust the zoom level as needed
+            });
+
+            // Create a marker and set its position.
+            var marker = new google.maps.Marker({
+                map: map,
+                position: center,
+                title: 'Your Location'
+            });
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdzRGfBn-L-9dImWXxamhLkZPtpQNZjMI&&callback=initMap" async defer></script>
+</body>
+</html>
